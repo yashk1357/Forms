@@ -1,0 +1,31 @@
+<%# 
+<form action="/users" method="post">
+    <label for="name">Name </label>
+    <input type="text" name="user[username]" id="name">
+     <label for="email">Email </label>
+  <input type="text" id="email" name="user[email]">
+   <label for="pass">Password </label>
+  <input type="password" id="pass"name="user[password]">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>
+  
+
+<h1> ADD USER </h1>
+<br>
+
+
+<%= form_with model: @user do |form| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+    <%= @user.errors.full_messages%>
+    </div>
+  <%end%>
+
+  <div class="ml-5"> <%= form.label(:user, :Username)%><br>
+  <%= form.text_field :username%></div><br>
+  <div><%= form.label(:user, :Email)%><br>
+  <%= form.text_field :email%></div><br>
+   <div><%= form.label(:user, :Password)%><br>
+  <%= form.text_field :password%></div><br>
+  <%= form.submit "make new user", class:"btn"%>
+     
+<%end%>
